@@ -1,47 +1,76 @@
 # Employee Management System
 
-A simple Employee Management System built using Java and Spring Boot.
+A RESTful Employee Management System built using Java, Spring Boot, Spring Data JPA, Hibernate, and MySQL.
 
-## Technologies Used
+This project provides APIs to create, retrieve, update, and delete employee records.
+
+## 🚀 Features
+
+- Add a new employee
+- Get all employees
+- Get employee by ID
+- Update employee details
+- Delete an employee
+- MySQL database integration
+- RESTful APIs
+- JPA/Hibernate database operations
+- Swagger API documentation
+- Postman API testing
+
+## 🛠️ Technologies Used
 
 - Java
 - Spring Boot
 - Spring Data JPA
-- REST API
+- Hibernate
 - MySQL
 - Maven
+- Swagger / OpenAPI
 - Postman
 - Git & GitHub
 
-## Features
+## 🏗️ Project Architecture
 
-- Add Employee
-- View All Employees
-- View Employee by ID
-- Update Employee
-- Delete Employee
+```text
+Client (Postman / Swagger)
+          |
+          ↓
+     Controller
+          |
+          ↓
+       Service
+          |
+          ↓
+     Repository
+          |
+          ↓
+   Spring Data JPA
+          |
+          ↓
+        MySQL
 
-## API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/employees` | Add Employee |
-| GET | `/employees` | Get All Employees |
-| GET | `/employees/{id}` | Get Employee by ID |
-| PUT | `/employees/{id}` | Update Employee |
-| DELETE | `/employees/{id}` | Delete Employee |
+## 📁 Project Structure
 
-## How to Run
-
-1. Open the project in IntelliJ IDEA.
-2. Configure MySQL database.
-3. Run the Spring Boot application.
-4. Test the APIs using Postman.
-
-## Project Status
-
-Completed Employee Management CRUD operations successfully.
-
-## Author
-
-Sanjai Kumar
+employee-management/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/example/employee_management/
+│   │   │       ├── controller/
+│   │   │       ├── entity/
+│   │   │       ├── repository/
+│   │   │       ├── service/
+│   │   │       └── EmployeeManagementApplication.java
+│   │   │
+│   │   └── resources/
+│   │       └── application.properties
+│   │
+│   └── test/
+│
+├── .gitignore
+├── pom.xml
+├── mvnw
+├── mvnw.cmd
+└── README.md
