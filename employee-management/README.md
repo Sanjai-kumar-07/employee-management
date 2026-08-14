@@ -1,76 +1,131 @@
 # Employee Management System
 
-A RESTful Employee Management System built using Java, Spring Boot, Spring Data JPA, Hibernate, and MySQL.
+A backend Employee Management System built using Java and Spring Boot.
 
-This project provides APIs to create, retrieve, update, and delete employee records.
+This project provides REST APIs to manage employees with JWT-based authentication and role-based authorization.
 
-## 🚀 Features
+## Features
 
-- Add a new employee
-- Get all employees
-- Get employee by ID
-- Update employee details
-- Delete an employee
-- MySQL database integration
+- Employee CRUD operations
 - RESTful APIs
-- JPA/Hibernate database operations
-- Swagger API documentation
+- JWT Authentication
+- Role-Based Authorization
+- HR-only Update and Delete access
+- Public Employee GET API
+- Secure POST, PUT and DELETE APIs
+- Password encryption using BCrypt
+- MySQL database integration
 - Postman API testing
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - Java
 - Spring Boot
+- Spring Security
+- JWT
 - Spring Data JPA
 - Hibernate
 - MySQL
 - Maven
-- Swagger / OpenAPI
 - Postman
-- Git & GitHub
+- IntelliJ IDEA
 
-## 🏗️ Project Architecture
+## Security
+
+This project uses JWT authentication and role-based authorization.
+
+### Access Control
+
+| Operation | Access |
+|---|---|
+| GET Employees | Public |
+| POST Employee | Authenticated User |
+| PUT Employee | HR Only |
+| DELETE Employee | HR Only |
+
+### Authentication Responses
+
+- No JWT token → `401 Unauthorized`
+- Employee token for HR-only operation → `403 Forbidden`
+- Valid HR token → Request allowed
+
+## API Endpoints
+
+### Authentication
 
 ```text
-Client (Postman / Swagger)
-          |
-          ↓
-     Controller
-          |
-          ↓
-       Service
-          |
-          ↓
-     Repository
-          |
-          ↓
-   Spring Data JPA
-          |
-          ↓
-        MySQL
+POST /auth/login
 
 
-## 📁 Project Structure
+src
+└── main
+    ├── java
+    │   └── com.example.employee_management
+    │       ├── config
+    │       │   └── SecurityConfig.java
+    │       ├── controller
+    │       ├── entity
+    │       ├── repository
+    │       └── service
+    │           └── JwtAuthenticationFilter.java
+    │
+    └── resources
+        └── application.properties
 
-employee-management/
-│
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/example/employee_management/
-│   │   │       ├── controller/
-│   │   │       ├── entity/
-│   │   │       ├── repository/
-│   │   │       ├── service/
-│   │   │       └── EmployeeManagementApplication.java
-│   │   │
-│   │   └── resources/
-│   │       └── application.properties
-│   │
-│   └── test/
-│
-├── .gitignore
-├── pom.xml
-├── mvnw
-├── mvnw.cmd
-└── README.md
+
+## How to Run
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Sanjai-kumar-07/employee-management.git
+
+## Testing
+
+The APIs were tested using Postman.
+
+### Tested Scenarios
+
+- GET employees without authentication
+- GET employee by ID
+- POST employee with authentication
+- PUT employee with HR authentication
+- DELETE employee with HR authentication
+- Unauthorized requests without JWT
+- Forbidden requests using non-HR roles
+
+### Security Testing
+
+- GET API → Public access
+- POST API → Authentication required
+- PUT API → HR role required
+- DELETE API → HR role required
+- No JWT token → `401 Unauthorized`
+- Employee token for HR operation → `403 Forbidden`
+- HR token → Request successful
+
+## Future Improvements
+
+- Add pagination and sorting
+- Add employee search functionality
+- Add Swagger/OpenAPI documentation
+- Add global exception handling
+- Add unit and integration tests
+- Add frontend interface
+- Deploy the application to the cloud
+
+## Author
+
+**Sanjai Kumar**
+
+GitHub:  
+https://github.com/Sanjai-kumar-07
+
+
+## Project Description
+
+Employee Management System is a secure backend application developed using Java and Spring Boot.
+
+The application provides employee management REST APIs with JWT authentication and role-based authorization. Employee data can be viewed publicly, while employee creation requires authentication and update/delete operations are restricted to HR users.
+
+The project demonstrates practical implementation of Spring Boot, Spring Security, JWT, REST APIs, JPA, Hibernate, and MySQL.
